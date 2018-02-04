@@ -162,6 +162,8 @@ spec:
       name: data
     spec:
       accessModes: ["ReadWriteOnce"]
+      # added this to show how to use different
+      # storageClassName
       storageClassName: slow
       resources:
         requests:

@@ -1,0 +1,7 @@
+[submodule "galera-docker-mariadb"]
+	path = galera-docker-mariadb
+	url = https://github.com/severalnines/galera-docker-mariadb.git
+	branch = master
+[submodule "monitoring/heapster"]
+	path = monitoring/heapster
+	url = https://github.com/kubernetes/heapster.git

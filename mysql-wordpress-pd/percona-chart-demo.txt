@@ -1,0 +1,26 @@
+1. helm install --name kubeconf stable/percona
+
+2. kubectl exec -it kubeconf-percona-773683385-pppdh -- mysql -u root -p$(kubectl get secret --namespace default kubeconf-percona -o jsonpath="{.data.mysql-root-password}" | base64 --decode; echo) -h kubeconf-percona
+
+3. kubectl get po
+4. kubectl get svc -o wide
+
+5. kubectl create -f wordpress-deployment.yaml
+
+6. kubectl describe po wordpress-xxx
+
+7. kubectl describe secret kubeconf-percona
+
+8. kubectl get po,svc
+
+
+        - name: WORDPRESS_DB_HOST
+          #value: wordpress-mysql
+          value: kubeconf-percona
+        - name: WORDPRESS_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              #name: mysql-pass
+              #key: password.txt
+              name: kubeconf-percona 
+              key: mysql-root-password
